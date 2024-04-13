@@ -3,9 +3,9 @@ public class Condition {
     public int waterReq;
     public int growthRate;
 
-    public Conditions(){}
+    public Condition(){}
 
-    public Conditions(int sunlight, int water, int gr){
+    public Condition(int sunlight, int water, int gr){
         sunlightReq = sunlight;
         waterReq = water;
         growthRate = gr;
