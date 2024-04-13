@@ -24,30 +24,64 @@ class Vertex {
         prev = null;
         scratch = 0;
     }
+}
+
+    class Path implements Comparable<Path> {
+        public Vertex dest; // w
+        public double cost; // d(w)
+    
+        public Path(Vertex d, double c) {
+            dest = d;
+            cost = c;
+        }
+    
+        public int compareTo(Path rhs) {
+            double otherCost = rhs.cost;
+    
+            return cost < otherCost ? -1 : cost > otherCost ? 1 : 0;
+        }
+    
+        public String toString() {
+            return cost + " ";
+        }
+    }
+
+    class Edge {
+        public Vertex dest; // Second vertex in Edge
+        public double cost; // Edge cost
+    
+        public Edge(Vertex d, double c) {
+            dest = d;
+            cost = c;
+        }
+    }
 
 public class Graph {
     public static final double INFINITY = Double.MAX_VALUE;
     private Map<String, Vertex> vertexMap = new HashMap<String, Vertex>();
-    public String path = "";
-    public ArrayList<String> pathList = new ArrayList<>();
-    public ArrayList<Double> priceList = new ArrayList<>();
-    public ArrayList<String> edgeList = new ArrayList<>();
-    public int counter = 0;
-    public int pathCounter = 0;
-    public boolean multiplePaths = false;
-    public boolean breakOut = false;
-    public ArrayList<String> multPaths = new ArrayList<>();
+    public int x, y;
 
+    public Vertex getVertex(String vertexName) {
+        Vertex v = vertexMap.get(vertexName);
+        if (v == null) {
+            v = new Vertex(vertexName);
+            vertexMap.put(vertexName, v);
+        }
+        return v;
+    }
 
-        /**
-     * Add a new edge to the graph.
-     */
     public void addEdge(String sourceName, String destName, double cost) {
-        Vertex v = vertex.getVertex(sourceName);
+        Vertex v = getVertex(sourceName);
         Vertex w = getVertex(destName);
         v.adj.add(new Edge(w, cost));
-        edgeList.add(sourceName + " " + destName);
+        //edgeList.add(sourceName + " " + destName);
 
     }
+
+
+
+
+
+
 }
 
