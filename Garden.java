@@ -1,8 +1,46 @@
+import java.util.ArrayList;
+
 import org.w3c.dom.Node;
 
 public class Garden {
 
     public static void main(String[] args) {
+
+    }
+
+    ArrayList<String> sprinklers = new ArrayList<>();
+
+    public void setSprinkler(Node[] garden) {
+        for (Node node : garden) {
+            int total = 0;
+            ArrayList<String> List = new ArrayList<>();
+            for (String edge : node.edges) {
+                total++;
+                List.add(edge);
+            }
+            List.add(node.getNodeName());
+            if (total >= 3) {
+                double random = (int) (Math.random() * (total - 1) + total);
+                if ((int) (Math.random() * (2 - 1) + 2) == 1) {
+                    sprinklers.add(List.get(random));
+                }
+            }
+
+        }
+
+        for (Node node : garden) {
+            for (String sprinkler : sprinklers) {
+                if (node.getNodeName() == sprinkler) {
+                    node.setType("Sprinkler");
+                    for (Node node1 : garden) {
+                        area = Coverage(node, node1);
+                        node1.setWaterCoverage(area);
+                        node.setWaterCoverage(area);
+                    }
+                }
+            }
+
+        }
 
     }
 
@@ -18,41 +56,20 @@ public class Garden {
 
         while (positionNode < garden.length) {
 
-            if(garden[positionNode].isCovered()){
+            if (garden[positionNode].isCovered()) {
 
-
-
-            }else{
-
-                
-
+            } else {
 
             }
-
-
-
-
-
-
-
 
             positionNode++;
         }
 
     }
 
-    public double Coverage(Herb herb, Herb sprinkler) {
-        double diameter1 = herb.getDiamter();
-        double radius1 = diameter1 / 2;
-        Node node1 = herb.getNode();
-        double diameter2 = sprinkler.getDiamter();
-        double radius2 = diameter2 / 2;
-        Node node2 = sprinkler.getNode();
-        double totalX = Math.abs(node1.getX() - node2.getX());
-        double totalY = Math.abs(node1.getY() - node2.getY());
-        double distance = phythagoras(totalX, totalY);
-        totalNodeRadius = (diameter1 / 2) + (diameter2 / 2);
-        return intersectionArea(node1.getX(), node1.getY(), radius1, node2.getX(), node2.getY(), radius2);
+    public double sprinklerCoverage(Node Node1, Node Node2) {
+
+        return intersectionArea(Node1.getX(), Node1.getY(), 3, Node2.getX(), Node2.getY(), 1);
     }
 
     static int intersectionArea(int X1, int Y1, int R1,
