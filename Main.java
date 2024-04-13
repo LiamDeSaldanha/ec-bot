@@ -7,7 +7,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("path_to_your_json_file.json"));
+            Object obj = parser.parse(new FileReader("test.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
             String name = (String) jsonObject.get("name");
