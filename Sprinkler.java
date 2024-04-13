@@ -1,3 +1,4 @@
+
 public class Sprinkler {
     private double radius;
     private Node position;

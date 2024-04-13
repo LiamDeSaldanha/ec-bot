@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
 public class Node {
+
      private int x, y;
      private String nodeNum;
      private String herb;
      private boolean covered;
+     public String[] edges = new String[10000];
 
      public Node(String nodeNum, int x, int y, String herb) {
           this.nodeNum = nodeNum;
@@ -12,14 +16,12 @@ public class Node {
      }
 
      public void setHerb(String herbName) {
+          this.herb = herbName;
 
      }
 
-     public int getX() {
-          return x;
+     public void setEdges(String[] edges) {
+          this.edges = edges;
      }
 
-     public int getY() {
-          return Y;
-     }
 }

@@ -1,3 +1,4 @@
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -51,7 +52,8 @@ public class Herb {
     public double getDiamter() {
         return diameter;
     }
-    public Node getNode(){
+
+    public Node getNode() {
         return position;
     }
 
