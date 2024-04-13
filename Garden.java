@@ -1,8 +1,33 @@
+import org.w3c.dom.Node;
 
 public class Garden {
 
     public static void main(String[] args) {
 
+    }
+
+    public Int findNext(Node[] garden) {
+        boolean flag = false;
+        int positionNode = 0;
+        for (Node position : garden) {
+            if (position != null) {
+                flag = true;
+                break;
+            }
+        }
+
+        while (positionNode < garden.length) {
+
+            if(garden[positionNode].isCovered()){
+
+
+
+            }else{
+
+                
+
+
+            }
 
 
 
@@ -11,8 +36,8 @@ public class Garden {
 
 
 
-
-        
+            positionNode++;
+        }
 
     }
 
@@ -93,17 +118,6 @@ public class Garden {
 
     public static void main(String[] args) {
 
-
-
-
-
-
-
-
-
-
-        
-
     }
 
     public double Coverage(Herb herb, Herb sprinkler) {
@@ -178,4 +192,3 @@ public class Garden {
     }
 
 }
-
