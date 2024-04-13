@@ -1,22 +1,27 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Herb {
     private String name;
     private Int sellingPrice;
-    private double currentWater;
-    private double currentSunlight;
-    private double requiredWater;
-    private double requiredSunlight;
+    private ArrayList<duble> currentConditions = new ArrayList<>();
+    private ArrayList<duble> poorConditions = new ArrayList<>();
+    private ArrayList<duble> fairConditions = new ArrayList<>();
+    private ArrayList<duble> excellentConditions = new ArrayList<>();
     private Int diameter;
     private Int verticalGrowth;
     private double shadowExperienced;
+    private Node position;
 
-    Herb(String name, Int sellingPrice, double currentWater, double currentSunlight, double requiredWater,
-            double requiredSunlight, Int diameter, Int verticalGrowth, double shadowExperienced) {
+    Herb(String name, Int sellingPrice, ArrayList<duble> currentConditions, ArrayList<duble> poorConditions,
+            ArrayList<duble> fairConditions,
+            ArrayList<duble> excellentConditions, Int diameter, Int verticalGrowth, double shadowExperienced) {
         this.name = name;
         this.sellingPrice = sellingPrice;
-        this.currentWater = currentWater;
-        this.currentSunlight = currentSunlight;
-        this.requiredWater = requiredWater;
-        this.requiredSunlight = requiredSunlight;
+        this.currentConditions = currentConditions;
+        this.poorConditions = poorConditions;
+        this.fairConditions = currentConditions;
+        this.excellentConditions = currentConditions;
         this.diameter = diameter;
         this.verticalGrowth = verticalGrowth;
         this.shadowExperienced = shadowExperienced;
@@ -41,6 +46,13 @@ public class Herb {
 
     public double getShadowExperienced() {
         return shadowExperienced;
+    }
+
+    public double getDiamter() {
+        return diameter;
+    }
+    public Node getNode(){
+        return position;
     }
 
 }
