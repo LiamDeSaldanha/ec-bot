@@ -1,14 +1,19 @@
-<<<<<<< HEAD
+
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Graph g = new Graph();
-        Node pos;
+        
+        //READING IN THE TEXT FILE
         Scanner input = new Scanner(new File("1.txt"));
-        Node[] gardens = new Node[100];
+        Node[] gardens = new Node[1000];
+        String[] edges = new String[10000];
 
         int x, y;
         String node;
@@ -26,29 +31,27 @@ public class Main {
 
         input.nextLine();
 
-        while (int)
-    }
-
-=======
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import java.io.FileReader;
-
-public class Main {
-    public static void main(String[] args) {
-        JSONParser parser = new JSONParser();
-
-        try {
-            Object obj = parser.parse(new FileReader("test.json"));
-            JSONObject jsonObject = (JSONObject) obj;
-
-            String name = (String) jsonObject.get("name");
-            System.out.println(name);
-
-            // Continue with other fields
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < counter; i++) {
+            String line = input.nextLine();
+            String paths = (line.substring(line.indexOf("["), line.indexOf("]")));
+            edges = paths.split(", ");
+            gardens[i].setEdges(edges);
         }
+
+
+        //READ OUTPUTS TO TEXT FILE
+        String fileName = "output.txt"; // Specify the file name
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            // Write content to the file
+            writer.write("Hello, world!\n");
+            
+
+            System.out.println("Data has been written to " + fileName);
+        } catch (IOException e) {
+            System.err.println("Error writing to the file: " + e.getMessage());
+        }
+
+
     }
->>>>>>> 29e7950e5b82659d44a3b8a26b88be8225f81b9a
 }
