@@ -58,23 +58,22 @@ public class Main {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             // Write content to the file
             writer.write("{\n");
-            writer.write("\"Herbs:\" [\n");
+            writer.write("\t\"Herbs\": [\n");
 
             for (int i = 0; i < counter; i++) {
-                writer.write("[" + gardens[i].nodeNum +  ", \"" + gardens[i].herb + "\" ],\n");
+                writer.write("\t\t[" + gardens[i].nodeNum +  ", \"" + gardens[i].herb + "\" ],\n");
                 
             }
+            writer.write("\n\t],");
 
-            writer.write("\"Sprinklers:\" [");
+            writer.write("\n\t\"Sprinklers:\" [");
+            writer.write("\n\t]");
 
             writer.write("\n}");
             System.out.println("Data has been written to " + fileName);
         } catch (IOException e) {
             System.err.println("Error writing to the file: " + e.getMessage());
         }
-
-
-        
 
 
     }
