@@ -61,7 +61,7 @@ public class Main {
             writer.write("\"Herbs:\" [\n");
 
             for (int i = 0; i < counter; i++) {
-                writer.write("[" + gardens[i].nodeNum +  ", \"" + gardens[i].getHerb() + "\" ],\n");
+                writer.write("[" + gardens[i].nodeNum +  ", \"" + gardens[i].herb + "\" ],\n");
                 
             }
 
