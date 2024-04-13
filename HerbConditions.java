@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class HerbConditions{
+public class HerbCondition{
     public String name;
     public Condition poorCondition;
     public Condition aveCondition;
