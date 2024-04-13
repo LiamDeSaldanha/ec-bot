@@ -19,24 +19,37 @@ public class Main {
         String node;
         int counter = 0;
 
-        while (input.nextLine().charAt(0) != '}'){
+        input.nextLine();
+        while (input.hasNextLine()){
+
             String line = input.nextLine();
-            node = line.charAt(3) + "";
-            x  = Integer.parseInt(line.substring(line.indexOf("["), line.indexOf(",")));
-            y = Integer.parseInt(line.substring(line.indexOf(","), line.indexOf("[")));
+            if( line.charAt(0) == '}'){
+                break;
+            }
             
-            gardens[counter] = new Node(node, x, y, null);
+            node = line.charAt(3) + "";
+            if(line.charAt(4) != '"'){
+                node+= line.charAt(4);
+            }
+            x  = Integer.parseInt(line.substring(line.indexOf("[") + 1, line.indexOf(",")));   
+            y = Integer.parseInt(line.substring(line.indexOf(",") + 2, line.indexOf("]")));
+            
+            
+            
+            gardens[counter] = new Node(node, x, y, "HERB");
             counter++;
         }
 
         input.nextLine();
 
         for (int i = 0; i < counter; i++) {
-            String line = input.nextLine();
-            String paths = (line.substring(line.indexOf("["), line.indexOf("]")));
+            String line2 = input.nextLine();
+            String paths = (line2.substring(line2.indexOf("[") + 1, line2.indexOf("]") ));
             edges = paths.split(", ");
             gardens[i].setEdges(edges);
+            
         }
+        //////
 
 
         //READ OUTPUTS TO TEXT FILE
@@ -44,9 +57,17 @@ public class Main {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             // Write content to the file
-            writer.write("Hello, world!\n");
-            
+            writer.write("{\n");
+            writer.write("\"Herbs:\" [\n");
 
+            for (int i = 0; i < counter; i++) {
+                writer.write("[" + gardens[i].nodeNum +  ", \"" + gardens[i].getHerb() + "\" ],\n");
+                
+            }
+
+            writer.write("\"Sprinklers:\" [");
+
+            writer.write("\n}");
             System.out.println("Data has been written to " + fileName);
         } catch (IOException e) {
             System.err.println("Error writing to the file: " + e.getMessage());
